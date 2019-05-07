@@ -1,0 +1,95 @@
+{
+    "type": "object",
+    "properties": {
+        "policySetDefinitionName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The policy set definition.",
+            "properties": {
+                "id": {
+                    "description": "The ID of the policy set definition.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the policy set definition.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "The policy definition properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "description": {
+                            "description": "The policy set definition description.",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "description": "The display name of the policy set definition.",
+                            "type": "string"
+                        },
+                        "metadata": {
+                            "description": "The policy set definition metadata.",
+                            "type": "object"
+                        },
+                        "parameters": {
+                            "description": "The policy set definition parameters that can be used in policy definition references.",
+                            "type": "object"
+                        },
+                        "policyDefinitions": {
+                            "description": "An array of policy definition references.",
+                            "items": {
+                                "description": "The policy definition reference.",
+                                "properties": {
+                                    "parameters": {
+                                        "description": "Required if a parameter is used in policy rule.",
+                                        "type": "object"
+                                    },
+                                    "policyDefinitionId": {
+                                        "description": "The ID of the policy definition or policy set definition.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "policyType": {
+                            "description": "The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.",
+                            "enum": [
+                                "NotSpecified",
+                                "BuiltIn",
+                                "Custom"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "policyType"
+                            }
+                        }
+                    },
+                    "required": [
+                        "policyDefinitions"
+                    ]
+                },
+                "type": {
+                    "description": "The type of the resource (Microsoft.Authorization/policySetDefinitions).",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "x-ms-azure-resource": true,
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
